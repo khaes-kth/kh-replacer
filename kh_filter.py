@@ -3,8 +3,14 @@ import os
 
 
 def main(argv):
-    if argv[1].startswith('CtLiteral') and argv[0] in argv[1]:
-        print(argv[1])
+    line = input()
+    while (line):
+        if line.startswith('CtLiteral') and argv[0] in line:
+            print(line)
+        try:
+            line = input()
+        except:
+            break
 
 if __name__ == "__main__":
     main(sys.argv[1:])

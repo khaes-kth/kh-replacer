@@ -36,9 +36,9 @@ public class ReplacerCommand implements Callable<Integer> {
     @Override
     public Integer call() throws Exception {
         String[] oldStrIdParts = oldStrId.split(",");
-        File oldSrc = new File(oldStrIdParts[oldStrIdParts.length - 2]);
-        final int oldLine = Integer.parseInt(oldStrIdParts[1]), oldCol = Integer.parseInt(oldStrIdParts[2]),
-                oldEndLine = Integer.parseInt(oldStrIdParts[3]), oldEndCol = Integer.parseInt(oldStrIdParts[4]);
+        File oldSrc = new File(oldStrIdParts[oldStrIdParts.length - 8]);
+        final int oldLine = Integer.parseInt(oldStrIdParts[1]), oldCol = Integer.parseInt(oldStrIdParts[3]),
+                oldEndLine = Integer.parseInt(oldStrIdParts[2]), oldEndCol = Integer.parseInt(oldStrIdParts[4]);
 
         File newDir = Files.createTempDirectory("src").toFile();
 
@@ -64,7 +64,7 @@ public class ReplacerCommand implements Callable<Integer> {
 
         ProcessBuilder pb =
                 new ProcessBuilder("git", "diff", "--no-index", oldSrc.getAbsolutePath(),
-                        newSrc.getAbsolutePath());
+                        newSrc.getAbsolutePath()).redirectOutput(new File(outputPath));
         Process p = pb.start();
         p.waitFor();
 

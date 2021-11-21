@@ -47,7 +47,7 @@
                         <configuration>
                             <archive>
                                 <manifest>
-                                    <mainClass>se.wasp.Main</mainClass>
+                                    <mainClass>se.wasp.replacer.Main</mainClass>
                                 </manifest>
                             </archive>
                             <descriptorRefs>

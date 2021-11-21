@@ -1,0 +1,1 @@
+java -jar parser.jar -s tmp/Patch-Explainer-Test/ -f csv | python3 parser_csv1_csv2_converter.py | python3 kh_filter.py "smaller" | xargs -n1 -d '\n' java -jar kh-replacer/target/replacer-1.0-SNAPSHOT-jar-with-dependencies.jar -n "bigger than zero" -of diff.diff -os
